@@ -7,17 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+        'alarmalade': {
+          50: '#fef7f2',
+          100: '#fdeee5',
+          200: '#fad9cc',
+          300: '#f6bba8',
+          400: '#f0927a',
+          500: '#f25533', // Main incident.io orange
+          600: '#e03e1b',
+          700: '#bc2f14',
+          800: '#9b2817',
+          900: '#7f2418',
+        },
+        'cream': {
+          50: '#fefdfb',
+          100: '#fefbf7',
+          200: '#fcf6ef',
+          300: '#f9f0e7',
+          400: '#f5e9dc',
+          500: '#f0e1d0',
+          600: '#e8d3bb',
+          700: '#d9c0a0',
+          800: '#c9ab84',
+          900: '#b59568',
         }
       },
       animation: {
