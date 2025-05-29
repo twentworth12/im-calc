@@ -219,6 +219,69 @@ export const ROICalculator: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Explanation Section */}
+                <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl">
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span className="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </span>
+                    How We Calculated Your Savings
+                  </h3>
+
+                  <div className="space-y-6 text-gray-300">
+                    {/* Current Costs Breakdown */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">Current Monthly Costs</h4>
+                      <div className="space-y-2 ml-4">
+                        <div className="flex justify-between">
+                          <span>• Engineering time: {((metrics.averageIncidentsPerMonth * metrics.averageDowntimePerIncident * metrics.averageEngineersPerIncident) / 60).toFixed(1)} hours × ${metrics.engineerHourlyRate}/hr</span>
+                          <span className="text-white font-medium">{formatCurrency(results.currentCost.engineeringCost)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>• Revenue loss: {(metrics.averageIncidentsPerMonth * metrics.averageDowntimePerIncident).toFixed(0)} minutes × ${metrics.revenuePerMinute}/min</span>
+                          <span className="text-white font-medium">{formatCurrency(results.currentCost.revenueLoss)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>• Process inefficiencies and coordination overhead</span>
+                          <span className="text-white font-medium">{formatCurrency(results.currentCost.totalCost - results.currentCost.engineeringCost - results.currentCost.revenueLoss)}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Improvements Explanation */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">Expected Improvements with Incident Management</h4>
+                      <div className="space-y-2 ml-4">
+                        <div>• <span className="text-green-400 font-medium">30% faster resolution</span> - Better runbooks, automation, and team coordination reduce time to fix issues</div>
+                        <div>• <span className="text-green-400 font-medium">20% fewer incidents</span> - Proactive monitoring and post-incident learnings prevent recurring problems</div>
+                        <div>• <span className="text-green-400 font-medium">25% less manual work</span> - Automated workflows, notifications, and escalations reduce repetitive tasks</div>
+                        <div>• <span className="text-green-400 font-medium">15% process efficiency</span> - Structured incident response eliminates confusion and delays</div>
+                      </div>
+                    </div>
+
+                    {/* Calculation Logic */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">The Math</h4>
+                      <div className="space-y-2 ml-4">
+                        <div>• Reduced incidents: {metrics.averageIncidentsPerMonth} → {(metrics.averageIncidentsPerMonth * 0.8).toFixed(1)} per month</div>
+                        <div>• Faster resolution: {metrics.averageDowntimePerIncident} → {(metrics.averageDowntimePerIncident * 0.7).toFixed(0)} minutes average</div>
+                        <div>• Total downtime: {(metrics.averageIncidentsPerMonth * metrics.averageDowntimePerIncident).toFixed(0)} → {(metrics.averageIncidentsPerMonth * 0.8 * metrics.averageDowntimePerIncident * 0.7).toFixed(0)} minutes/month</div>
+                        <div>• Engineering hours saved: {(((metrics.averageIncidentsPerMonth * metrics.averageDowntimePerIncident) - (metrics.averageIncidentsPerMonth * 0.8 * metrics.averageDowntimePerIncident * 0.7)) * metrics.averageEngineersPerIncident / 60).toFixed(1)} hours/month</div>
+                      </div>
+                    </div>
+
+                    {/* Conservative Note */}
+                    <div className="bg-blue-500/10 rounded-xl p-4 border-l-4 border-blue-500">
+                      <p className="text-sm">
+                        <span className="font-semibold text-blue-400">Conservative Estimates:</span> These calculations use industry-conservative improvement rates. 
+                        Many organizations see greater benefits, but we've used modest assumptions to provide realistic expectations.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Call to Action */}
                 <div className="backdrop-blur-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl p-6 border border-white/20 text-center">
                   <p className="text-lg text-white mb-4">
