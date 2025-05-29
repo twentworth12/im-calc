@@ -1,4 +1,3 @@
-import './App.css'
 import { ROICalculator } from './components/ROICalculator'
 
 function App() {
