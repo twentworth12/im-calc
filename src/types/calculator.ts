@@ -27,4 +27,15 @@ export interface ROIResults {
     paybackPeriodMonths: number;
     threeYearROI: number;
   };
+  improvements?: {
+    mttrReduction: number;
+    incidentReduction: number;
+    automationSavings: number;
+    mttrImprovement: number;
+  };
+  indirectBenefits?: {
+    reputationProtection: number;
+    customerRetention: number;
+    innovationTime: number;
+  };
 }
