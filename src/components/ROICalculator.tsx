@@ -4,12 +4,12 @@ import { calculateROI } from '../utils/calculations';
 
 export const ROICalculator: React.FC = () => {
   const [metrics, setMetrics] = useState<IncidentMetrics>({
-    averageIncidentsPerMonth: 10,
-    averageDowntimePerIncident: 120,
-    averageEngineersPerIncident: 3,
-    averageCustomerImpact: 1000,
-    engineerHourlyRate: 150,
-    revenuePerMinute: 500,
+    averageIncidentsPerMonth: 8,
+    averageDowntimePerIncident: 90,
+    averageEngineersPerIncident: 2,
+    averageCustomerImpact: 500,
+    engineerHourlyRate: 120,
+    revenuePerMinute: 100,
   });
 
   const [results, setResults] = useState<ROIResults | null>(null);
