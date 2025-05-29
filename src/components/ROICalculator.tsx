@@ -49,7 +49,7 @@ export const ROICalculator: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-              Incident ROI Calculator
+              Incident ROI calculator
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
               Discover how much you could save with proper incident management
@@ -64,16 +64,16 @@ export const ROICalculator: React.FC = () => {
           <div>
             <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">
-                Current Incident Metrics
+                Current incident metrics
               </h2>
               
               <div className="space-y-6">
                 {[
-                  { key: 'averageIncidentsPerMonth', label: 'Incidents Per Month', description: 'How many incidents do you have monthly?', suffix: '' },
-                  { key: 'averageDowntimePerIncident', label: 'Average Downtime (minutes)', description: 'Typical resolution time per incident', suffix: 'min' },
-                  { key: 'averageEngineersPerIncident', label: 'Engineers Per Incident', description: 'How many engineers typically respond?', suffix: '' },
-                  { key: 'engineerHourlyRate', label: 'Engineer Hourly Rate', description: 'Fully loaded cost including benefits', suffix: '$' },
-                  { key: 'revenuePerMinute', label: 'Revenue Per Minute', description: 'Business impact during downtime', suffix: '$' },
+                  { key: 'averageIncidentsPerMonth', label: 'Incidents per month', description: 'How many incidents do you have monthly?', suffix: '' },
+                  { key: 'averageDowntimePerIncident', label: 'Average downtime (minutes)', description: 'Typical resolution time per incident', suffix: 'min' },
+                  { key: 'averageEngineersPerIncident', label: 'Engineers per incident', description: 'How many engineers typically respond?', suffix: '' },
+                  { key: 'engineerHourlyRate', label: 'Engineer hourly rate', description: 'Fully loaded cost including benefits', suffix: '$' },
+                  { key: 'revenuePerMinute', label: 'Revenue per minute', description: 'Business impact during downtime', suffix: '$' },
                 ].map((field) => (
                   <div key={field.key}>
                     <label className="block text-sm font-semibold text-gray-900 mb-1">
@@ -133,11 +133,11 @@ export const ROICalculator: React.FC = () => {
                   <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-sm font-medium text-gray-600 mb-1">Monthly Savings</div>
+                        <div className="text-sm font-medium text-gray-600 mb-1">Monthly savings</div>
                         <div className="text-3xl font-bold text-alarmalade-500">{formatCurrency(results.savings.monthlySavings)}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm font-medium text-gray-600 mb-1">Current Cost</div>
+                        <div className="text-sm font-medium text-gray-600 mb-1">Current cost</div>
                         <div className="text-2xl font-semibold text-gray-900">{formatCurrency(results.currentCost.totalCost)}</div>
                       </div>
                     </div>
@@ -147,14 +147,14 @@ export const ROICalculator: React.FC = () => {
                 {/* ROI Breakdown */}
                 <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    ROI Analysis
+                    ROI analysis
                   </h3>
 
                   {/* Cost Comparison */}
                   <div className="space-y-4 mb-8">
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-600">Current State</span>
+                        <span className="text-sm font-medium text-gray-600">Current state</span>
                         <span className="text-lg font-semibold text-gray-900">{formatCurrency(results.currentCost.totalCost)}/mo</span>
                       </div>
                       <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -164,7 +164,7 @@ export const ROICalculator: React.FC = () => {
                     
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-600">With Incident Management</span>
+                        <span className="text-sm font-medium text-gray-600">With incident management</span>
                         <span className="text-lg font-semibold text-gray-900">{formatCurrency(results.withIncidentManagement.totalCost)}/mo</span>
                       </div>
                       <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -182,13 +182,13 @@ export const ROICalculator: React.FC = () => {
                       <div className="text-3xl font-bold text-green-600">
                         {results.savings.percentageReduction.toFixed(0)}%
                       </div>
-                      <div className="text-sm font-medium text-gray-600">Cost Reduction</div>
+                      <div className="text-sm font-medium text-gray-600">Cost reduction</div>
                     </div>
                     <div className="text-center p-4 bg-blue-50 rounded-lg">
                       <div className="text-3xl font-bold text-blue-600">
                         {formatCurrency(results.savings.annualSavings)}
                       </div>
-                      <div className="text-sm font-medium text-gray-600">Annual Savings</div>
+                      <div className="text-sm font-medium text-gray-600">Annual savings</div>
                     </div>
                     <div className="text-center p-4 bg-orange-50 rounded-lg">
                       <div className="text-3xl font-bold text-orange-600">
@@ -196,13 +196,13 @@ export const ROICalculator: React.FC = () => {
                           ? 'Immediate' 
                           : `${results.roi.paybackPeriodMonths.toFixed(1)} mo`}
                       </div>
-                      <div className="text-sm font-medium text-gray-600">Payback Period</div>
+                      <div className="text-sm font-medium text-gray-600">Payback period</div>
                     </div>
                     <div className="text-center p-4 bg-purple-50 rounded-lg">
                       <div className="text-3xl font-bold text-purple-600">
                         {results.roi.threeYearROI.toFixed(0)}%
                       </div>
-                      <div className="text-sm font-medium text-gray-600">3-Year ROI</div>
+                      <div className="text-sm font-medium text-gray-600">3-year ROI</div>
                     </div>
                   </div>
                 </div>
@@ -210,13 +210,13 @@ export const ROICalculator: React.FC = () => {
                 {/* Explanation Section */}
                 <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    How We Calculated Your Savings
+                    How we calculated your savings
                   </h3>
 
                   <div className="space-y-6 text-gray-700">
                     {/* Current Costs Breakdown */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Current Monthly Costs</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Current monthly costs</h4>
                       <div className="space-y-2 bg-gray-50 rounded-lg p-4">
                         <div className="flex justify-between">
                           <span>Engineering time: {((metrics.averageIncidentsPerMonth * metrics.averageDowntimePerIncident * metrics.averageEngineersPerIncident) / 60).toFixed(1)} hours × ${metrics.engineerHourlyRate}/hr</span>
@@ -235,7 +235,7 @@ export const ROICalculator: React.FC = () => {
 
                     {/* Improvements Explanation */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Expected Improvements</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Expected improvements</h4>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
@@ -261,7 +261,7 @@ export const ROICalculator: React.FC = () => {
                     {/* Conservative Note */}
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                       <p className="text-sm text-blue-800">
-                        <span className="font-semibold">Conservative Estimates:</span> These calculations use industry-conservative improvement rates. 
+                        <span className="font-semibold">Conservative estimates:</span> These calculations use industry-conservative improvement rates. 
                         Many organizations see greater benefits, but we've used modest assumptions to provide realistic expectations.
                       </p>
                     </div>
@@ -277,7 +277,7 @@ export const ROICalculator: React.FC = () => {
                     Get started with incident.io and transform your incident response
                   </p>
                   <button className="px-8 py-3 bg-white text-alarmalade-500 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                    Get Started Today
+                    Get started today
                   </button>
                 </div>
               </div>
