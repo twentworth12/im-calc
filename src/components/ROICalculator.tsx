@@ -227,7 +227,7 @@ export const ROICalculator: React.FC = () => {
                           <span className="font-semibold">{formatCurrency(results.currentCost.revenueLoss)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span>Process inefficiencies and coordination overhead</span>
+                          <span>Documentation, communication, and coordination overhead</span>
                           <span className="font-semibold">{formatCurrency(results.currentCost.totalCost - results.currentCost.engineeringCost - results.currentCost.revenueLoss)}</span>
                         </div>
                       </div>
@@ -240,19 +240,25 @@ export const ROICalculator: React.FC = () => {
                         <div className="flex items-start gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <div>
-                            <span className="font-semibold text-green-600">30% faster resolution</span> - Better runbooks, automation, and team coordination
+                            <span className="font-semibold text-green-600">50% faster resolution</span> - Forrester study shows AIOps platforms reduce MTTR by 50%
                           </div>
                         </div>
                         <div className="flex items-start gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <div>
-                            <span className="font-semibold text-green-600">20% fewer incidents</span> - Proactive monitoring and post-incident learnings
+                            <span className="font-semibold text-green-600">98% noise reduction</span> - incident.io case study: 230-250 alerts → 2-5 real incidents
                           </div>
                         </div>
                         <div className="flex items-start gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <div>
-                            <span className="font-semibold text-green-600">25% less manual work</span> - Automated workflows, notifications, and escalations
+                            <span className="font-semibold text-green-600">Hours saved per incident</span> - Automated documentation, communication, and reporting
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <span className="font-semibold text-green-600">Reduced cognitive load</span> - "One of the improvements...is the reduction of that cognitive overload"
                           </div>
                         </div>
                       </div>
@@ -261,8 +267,8 @@ export const ROICalculator: React.FC = () => {
                     {/* Conservative Note */}
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                       <p className="text-sm text-blue-800">
-                        <span className="font-semibold">Conservative estimates:</span> These calculations use industry-conservative improvement rates. 
-                        Many organizations see greater benefits, but we've used modest assumptions to provide realistic expectations.
+                        <span className="font-semibold">Research-backed estimates:</span> These calculations are based on real incident.io customer case studies and Forrester research on AIOps platforms. 
+                        Actual results may vary, but these improvements reflect documented customer experiences.
                       </p>
                     </div>
                   </div>

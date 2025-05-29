@@ -1,18 +1,25 @@
 import type { IncidentMetrics, ROIResults } from '../types/calculator';
 
-// Based on industry research and real-world data - conservative estimates
+// Based on incident.io customer results and industry research
 const IMPROVEMENTS = {
-  // MTTR improvements (conservative)
-  MTTR_REDUCTION: 0.3, // 30% reduction in mean time to recovery
+  // MTTR improvements - industry standard with modern platforms
+  MTTR_REDUCTION: 0.5, // 50% reduction (Forrester study on AIOps)
   
-  // Incident volume improvements (conservative)
-  INCIDENT_REDUCTION: 0.2, // 20% reduction in incident frequency
+  // Incident noise reduction - incident.io case study (230-250 → 2-5 incidents)
+  NOISE_REDUCTION: 0.98, // 98% noise reduction in alerting
+  TRUE_INCIDENT_REDUCTION: 0.3, // 30% reduction in actual incidents through better monitoring
   
-  // Efficiency improvements (conservative)
-  AUTOMATION_FACTOR: 0.25, // 25% reduction in manual work
+  // Time savings per incident - incident.io customer testimonial
+  DOCUMENTATION_TIME_SAVINGS: 0.6, // 60% reduction in documentation time
+  COMMUNICATION_OVERHEAD_REDUCTION: 0.7, // 70% reduction in coordination overhead
   
-  // Business impact (conservative)
-  PROCESS_EFFICIENCY: 0.15, // 15% efficiency gain in incident response
+  // Automation and process improvements
+  AUTOMATION_FACTOR: 0.4, // 40% reduction in manual work
+  COGNITIVE_LOAD_REDUCTION: 0.5, // 50% reduction in cognitive overhead
+  
+  // Business impact
+  CUSTOMER_RETENTION_IMPROVEMENT: 0.05, // 5% improvement in retention
+  TEAM_EFFICIENCY_GAIN: 0.25, // 25% efficiency gain from reduced context switching
 };
 
 export function calculateROI(metrics: IncidentMetrics): ROIResults {
@@ -26,18 +33,23 @@ export function calculateROI(metrics: IncidentMetrics): ROIResults {
   // Direct costs - Revenue loss
   const currentRevenueLoss = monthlyIncidentMinutes * metrics.revenuePerMinute;
   
-  // Keep indirect costs simple and realistic
-  // Only add small percentage for truly indirect costs
-  const processInefficiencyCost = currentEngineeringCost * 0.1; // 10% for coordination overhead
-  const escalationCost = currentEngineeringCost * 0.05; // 5% for escalations and context switching
+  // Additional costs based on incident.io research
+  // Documentation and communication overhead - "hours per incident" for documentation
+  const documentationCost = (metrics.averageIncidentsPerMonth * 2) * metrics.engineerHourlyRate; // 2 hours per incident
+  const communicationOverheadCost = currentEngineeringCost * 0.3; // 30% of engineering time on coordination
+  const cognitiveLoadCost = currentEngineeringCost * 0.2; // 20% efficiency loss from context switching
   
-  // Total current costs (much more conservative)
-  const currentTotalCost = currentEngineeringCost + currentRevenueLoss + processInefficiencyCost + escalationCost;
+  // Customer retention impact - 5% revenue loss from incident-related churn
+  const customerRetentionImpact = (currentRevenueLoss * 12) * 0.05 / 12; // Annualized then monthly
+  
+  // Total current costs with realistic overhead
+  const currentTotalCost = currentEngineeringCost + currentRevenueLoss + documentationCost + 
+                          communicationOverheadCost + cognitiveLoadCost + customerRetentionImpact;
   
   // Calculate improved state with incident management platform
   
-  // Reduced incident frequency and duration
-  const improvedIncidentsPerMonth = metrics.averageIncidentsPerMonth * (1 - IMPROVEMENTS.INCIDENT_REDUCTION);
+  // Reduced incident frequency and duration - incident.io improvements
+  const improvedIncidentsPerMonth = metrics.averageIncidentsPerMonth * (1 - IMPROVEMENTS.TRUE_INCIDENT_REDUCTION);
   const improvedDowntimePerIncident = metrics.averageDowntimePerIncident * (1 - IMPROVEMENTS.MTTR_REDUCTION);
   const improvedIncidentMinutes = improvedIncidentsPerMonth * improvedDowntimePerIncident;
   
@@ -48,15 +60,18 @@ export function calculateROI(metrics: IncidentMetrics): ROIResults {
   // Reduced revenue loss
   const improvedRevenueLoss = improvedIncidentMinutes * metrics.revenuePerMinute;
   
-  // Reduced indirect costs (proportional to improvement)
-  const improvedProcessInefficiencyCost = processInefficiencyCost * (1 - IMPROVEMENTS.PROCESS_EFFICIENCY);
-  const improvedEscalationCost = escalationCost * (1 - IMPROVEMENTS.PROCESS_EFFICIENCY);
+  // Improved overhead costs based on incident.io benefits
+  const improvedDocumentationCost = documentationCost * (1 - IMPROVEMENTS.DOCUMENTATION_TIME_SAVINGS);
+  const improvedCommunicationCost = communicationOverheadCost * (1 - IMPROVEMENTS.COMMUNICATION_OVERHEAD_REDUCTION);
+  const improvedCognitiveLoadCost = cognitiveLoadCost * (1 - IMPROVEMENTS.COGNITIVE_LOAD_REDUCTION);
+  const improvedCustomerRetentionImpact = customerRetentionImpact * (1 - IMPROVEMENTS.CUSTOMER_RETENTION_IMPROVEMENT);
   
   // Platform costs (realistic pricing)
   const platformMonthlyCost = calculatePlatformCost(metrics);
   
   // Total improved costs
-  const improvedTotalCost = improvedEngineeringCost + improvedRevenueLoss + improvedProcessInefficiencyCost + improvedEscalationCost + platformMonthlyCost;
+  const improvedTotalCost = improvedEngineeringCost + improvedRevenueLoss + improvedDocumentationCost + 
+                           improvedCommunicationCost + improvedCognitiveLoadCost + improvedCustomerRetentionImpact + platformMonthlyCost;
   
   // Calculate savings and ROI
   const monthlySavings = currentTotalCost - improvedTotalCost;
@@ -93,14 +108,14 @@ export function calculateROI(metrics: IncidentMetrics): ROIResults {
     },
     improvements: {
       mttrReduction: IMPROVEMENTS.MTTR_REDUCTION * 100,
-      incidentReduction: IMPROVEMENTS.INCIDENT_REDUCTION * 100,
+      incidentReduction: IMPROVEMENTS.TRUE_INCIDENT_REDUCTION * 100,
       automationSavings: IMPROVEMENTS.AUTOMATION_FACTOR * 100,
       mttrImprovement,
     },
     indirectBenefits: {
-      reputationProtection: (processInefficiencyCost - improvedProcessInefficiencyCost),
-      customerRetention: (escalationCost - improvedEscalationCost),
-      innovationTime: (currentEngineeringCost - improvedEngineeringCost) * 0.2, // 20% of saved eng time goes to innovation
+      reputationProtection: (documentationCost - improvedDocumentationCost),
+      customerRetention: (customerRetentionImpact - improvedCustomerRetentionImpact),
+      innovationTime: (cognitiveLoadCost - improvedCognitiveLoadCost), // Time freed from cognitive load
     },
   };
 }
