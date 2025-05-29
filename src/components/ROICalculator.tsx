@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import type { IncidentMetrics, ROIResults } from '../types/calculator';
 import { calculateROI } from '../utils/calculations';
+import { Header } from './Header';
+import { Footer } from './Footer';
 
 export const ROICalculator: React.FC = () => {
   const [metrics, setMetrics] = useState<IncidentMetrics>({
@@ -43,8 +45,10 @@ export const ROICalculator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cream-50">
-      {/* Header */}
+    <div className="min-h-screen bg-cream-50 flex flex-col">
+      <Header />
+      
+      {/* Hero Section */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="text-center">
@@ -58,7 +62,7 @@ export const ROICalculator: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-12 flex-grow">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Input Section */}
           <div>
@@ -291,6 +295,8 @@ export const ROICalculator: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };
