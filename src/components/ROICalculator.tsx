@@ -48,10 +48,10 @@ export const ROICalculator: React.FC = () => {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
               Incident ROI Calculator
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
               Discover how much you could save with proper incident management
             </p>
           </div>
@@ -63,7 +63,7 @@ export const ROICalculator: React.FC = () => {
           {/* Input Section */}
           <div>
             <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">
                 Current Incident Metrics
               </h2>
               
